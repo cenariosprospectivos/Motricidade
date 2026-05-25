@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motricidade × Dependência | MD 2036</title>
+  <meta name="description" content="Ferramenta pedagógica para análise de motricidade e dependência dos eventos prospectivos da Pesquisa MD 2036.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Motricidade × Dependência">
+  <meta property="og:title" content="Motricidade × Dependência | MD 2036">
+  <meta property="og:description" content="Análise estrutural dos eventos prospectivos: quais eventos movem o sistema e quais dependem dos demais.">
+  <meta property="og:url" content="https://cenariosprospectivos.github.io/Motricidade/">
+  <meta property="og:image" content="https://cenariosprospectivos.github.io/Motricidade/assets/share/motricidade-share.jpg">
+  <meta property="og:image:secure_url" content="https://cenariosprospectivos.github.io/Motricidade/assets/share/motricidade-share.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="kicker">Análise estrutural</p>
+      <h1>Motricidade × Dependência</h1>
+      <p class="lead">Esta etapa mostra quais eventos mais influenciam o sistema e quais são mais influenciados pelos demais.</p>
+    </div>
+    <nav class="hero-actions">
+      <a href="https://cenariosprospectivos.github.io/Delphi/resultados.html" target="_blank" rel="noopener">Resultados Delphi</a>
+      <a href="https://cenariosprospectivos.github.io/Delphi/entrevista.html" target="_blank" rel="noopener">Consulta Delphi</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="explain-grid">
+      <article class="explain-card"><strong>1. O que é motricidade?</strong><p>É a capacidade de um evento influenciar outros eventos. Quanto maior, mais o evento move o sistema.</p></article>
+      <article class="explain-card"><strong>2. O que é dependência?</strong><p>É o quanto um evento é influenciado pelos demais. Quanto maior, mais ele depende do comportamento do sistema.</p></article>
+      <article class="explain-card"><strong>3. Como interpretar?</strong><p>Nem sempre o evento mais provável é o mais estratégico. Alguns eventos importam porque desencadeiam efeitos em cadeia.</p></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-header">
+        <div><span class="section-number">01</span><h2>Gráfico Motricidade × Dependência</h2><p class="section-lead">Eventos mais altos têm maior motricidade. Eventos mais à direita têm maior dependência.</p></div>
+        <div class="button-row"><button id="reloadBtn" type="button" class="ghost-btn">Recarregar</button><button id="exportJsonBtn" type="button" class="ghost-btn">Exportar JSON</button><button id="exportCsvBtn" type="button" class="ghost-btn">Exportar CSV</button></div>
+      </div>
+      <div id="statusBox" class="status">Carregando dados...</div>
+      <div class="chart-layout">
+        <div class="chart-card"><canvas id="matrixChart"></canvas></div>
+        <aside class="legend-card"><h3>Quadrantes</h3><ul><li><strong>Evento motor:</strong> influencia muito e depende pouco.</li><li><strong>Evento de ligação:</strong> influencia muito e também depende muito.</li><li><strong>Evento dependente:</strong> influencia pouco, mas é muito afetado pelos demais.</li><li><strong>Evento autônomo:</strong> influencia pouco e depende pouco.</li></ul></aside>
+      </div>
+      <div class="classification-grid" id="classificationGrid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-header">
+        <div><span class="section-number">02</span><h2>Matriz de influência entre eventos</h2><p class="section-lead">Preencha cada célula avaliando quanto o evento da linha influencia o evento da coluna.</p></div>
+        <div class="button-row"><button id="saveBtn" type="button">Salvar no Supabase</button><button id="recalcBtn" type="button" class="ghost-btn">Recalcular sem salvar</button></div>
+      </div>
+      <div class="scale-card"><span><strong>0</strong> não influencia</span><span><strong>1</strong> influência fraca</span><span><strong>2</strong> influência média</span><span><strong>3</strong> influência forte</span></div>
+      <div class="table-wrap"><table id="matrixTable"><thead id="matrixHead"></thead><tbody id="matrixBody"></tbody></table></div>
+    </section>
+  </main>
+
+  <footer class="footer"><p>Ferramenta conectada ao Supabase da Pesquisa MD 2036. Os valores iniciais são pedagógicos e podem ser ajustados na matriz.</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
